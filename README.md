@@ -1,156 +1,216 @@
-# GestureOS 🚀
-> **Control Your Computer With Your Hands**  
-> *An AI-assisted computer vision and touchless desktop control system.*  
-> **Academic Level:** BCA 3rd Semester Summer Project | Human-Computer Interaction (HCI)
+<div align="center">
+
+# 🖐️ GestureOS
+### *Control Your Computer With Your Hands*
+
+<!-- Dynamic Typing SVG Animation -->
+<a href="https://github.com/rakibul200514/GestureOS">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3000&pause=1000&color=00F0FF&background=00000000&center=true&vCenter=true&width=750&lines=Touchless+AI+Desktop+Control+System;Powered+by+MediaPipe+%26+OpenCV;No+External+Sensors+Required!;BCA+3rd+Semester+Summer+Project;Control+Windows+11+With+Hand+Gestures" alt="GestureOS Animated Banner" />
+</a>
+
+<p align="center">
+  <b>A zero-hardware, AI-assisted computer vision application that transforms standard webcams into high-precision touchless mouse controllers.</b>
+</p>
+
+<!-- Dynamic Status Badges -->
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12" />
+  <img src="https://img.shields.io/badge/OpenCV-5.0+-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV" />
+  <img src="https://img.shields.io/badge/MediaPipe-0.10.14-00C4B4?style=for-the-badge&logo=google&logoColor=white" alt="MediaPipe" />
+  <img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Windows-11_Tested-0078D4?style=for-the-badge&logo=windows11&logoColor=white" alt="Windows 11" />
+  <img src="https://img.shields.io/badge/License-MIT-00ff88?style=for-the-badge" alt="License MIT" />
+</p>
+
+<p align="center">
+  <a href="#-quick-demo">Quick Demo</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-architecture">Architecture</a> •
+  <a href="#-how-to-run">How To Run</a> •
+  <a href="#-gesture-dictionary">Gestures</a> •
+  <a href="#-viva-qa">Viva Q&A</a> •
+  <a href="#-author">Author</a>
+</p>
 
 ---
 
-## 📌 Project Overview
-**GestureOS** is a zero-hardware, AI-assisted computer vision application that transforms any standard laptop or desktop webcam into a touchless mouse and gesture-based desktop controller. 
+</div>
 
-By leveraging **Google MediaPipe** for 21 3D hand landmarks tracking, **OpenCV** for real-time video stream processing, and **PyAutoGUI** for safe system-level desktop automation, GestureOS enables users to interact with their operating system seamlessly through hand gestures in the air.
+## 🌟 Highlights & Core Features
+
+```
+  ✨ 100% Zero External Hardware    👉 Uses standard laptop or USB webcam
+  ⚡ Real-Time Hand Tracking        👉 Tracks 21 3D hand joints at 30-100+ FPS
+  🎯 Exponential Smoothing Filter   👉 Eliminates hand tremors & jitter
+  👌 Pinch-to-Click Detection       👉 Euclidean distance between Thumb & Index
+  ✌️ Two-Finger Smooth Scrolling     👉 Natural page navigation across any app
+  🛡️ Safe Mode by Default           👉 Explicit user toggle prevents accidental clicks
+  🛑 Emergency Closed-Fist Stop     👉 Clench fist to immediately halt tracking
+  🖥️ Dual Mode Execution           👉 Run as Native Windows App OR Cyberpunk Web HUD
+```
 
 ---
 
-## 🌟 Key Features
-- **Real-Time 21 Hand Landmarks Tracking:** High-speed 3D spatial joint tracking powered by MediaPipe Hands.
-- **Natural Mirror Video Stream:** Automatically flipped video feed for intuitive, mirror-like interaction.
-- **Smooth Cursor Movement:** Exponential Moving Average (EMA) algorithm eliminates hand jitter and trembling.
-- **Pinch-to-Click:** Euclidean distance calculation between Thumb Tip (Landmark 4) and Index Tip (Landmark 8) triggers left clicks.
-- **Two-Finger Scroll:** Vertical tracking of Index and Middle fingers provides smooth up/down scrolling.
-- **Safety First (Safe Mode by Default):**
-  - Mouse control is disabled on startup to prevent accidental cursor jumps.
-  - Requires explicit user permission (Master Switch or Keyboard shortcut).
-  - Built-in gesture cooldown prevents runaway multi-clicking.
-  - FailSafe boundary stop: moving cursor to screen corner triggers immediate halt.
-- **Emergency Stop & Rest Gestures:**
-  - **Open Palm:** Temporarily pauses tracking (rest mode).
-  - **Closed Fist:** Emergency stop gesture that instantly disengages desktop control.
-- **Futuristic Cyberpunk Dashboard:**
-  - Real-time video HUD with glowing neon overlays.
-  - Live FPS counter, active gesture cards, and event history log.
-  - Interactive sensitivity and smoothing calibration sliders.
+## 🎮 Dual Run Modes (Windows 11 Ready)
+
+GestureOS is engineered with **two distinct operating modes**:
+
+| Mode | Launcher | Description |
+| :--- | :--- | :--- |
+| **1. Native Windows App (Recommended)** | `run_desktop_app.bat` | **No browser required!** Opens a high-tech floating HUD window and lets you control your entire Windows 11 PC (Chrome, VLC, YouTube, Desktop icons, File Explorer). |
+| **2. Cyberpunk Web Dashboard** | `run_gestureos.bat` | Starts a **FastAPI backend** and opens an ultra-modern neon dashboard at `http://127.0.0.1:8000` with live HUD, telemetry, sensitivity sliders, and event logs. |
+
+---
+
+## 🖐️ Gesture Dictionary & Control Mapping
+
+<div align="center">
+
+| Gesture Icon | Gesture Name | Active Fingers | Triggered Desktop Action |
+| :---: | :--- | :--- | :--- |
+| ☝️ | **Pointer Mode** | Index UP, Others DOWN | **Moves Mouse Cursor** across entire monitor |
+| 🤏 | **Pinch Click** | Thumb + Index Touch ($\text{dist} < 35\text{px}$) | **Left Mouse Click** (with 0.4s cooldown) |
+| ✌️ | **Scroll Mode** | Index + Middle UP | **Vertical Scroll Up / Down** across all apps |
+| ✋ | **Rest Mode** | Open Palm (All 5 Fingers UP) | **Pauses Tracking** (allows resting hand) |
+| ✊ | **Emergency Lock** | Closed Fist (All Fingers DOWN) | **Instant Safety Stop** (disengages mouse) |
+
+</div>
 
 ---
 
 ## 🏗️ System Architecture
-```
-                               +-----------------------------+
-                               |     Webcam Hardware (0)     |
-                               +--------------+--------------+
-                                              |
-                                              v (BGR Video Frames)
-                               +-----------------------------+
-                               |     OpenCV Video Engine     |
-                               |  - Frame Mirroring (Flip)   |
-                               |  - Resolution Normalization |
-                               +--------------+--------------+
-                                              |
-                                              v (RGB Video Frames)
-                               +-----------------------------+
-                               |     Google MediaPipe AI     |
-                               |  - Hand Presence Detection  |
-                               |  - 21 3D Joint Landmarks    |
-                               +--------------+--------------+
-                                              |
-                                              v (Landmark Coordinates)
-                               +-----------------------------+
-                               |       Gesture Engine        |
-                               |  - Finger Counting Logic    |
-                               |  - Euclidean Distance Math  |
-                               +--------------+--------------+
-                                              |
-                       +----------------------+----------------------+
-                       |                                             |
-                       v                                             v
-        +-----------------------------+               +-----------------------------+
-        |   Safety & Mouse Engine     |               |    FastAPI & WebSockets     |
-        |  - Coordinate Interpolation |               |  - MJPEG Live Video Feed    |
-        |  - Exponential Smoothing    |               |  - Real-Time JSON Telemetry |
-        |  - PyAutoGUI Desktop Action |               |  - Futuristic Neon Web UI   |
-        +-----------------------------+               +-----------------------------+
+
+```mermaid
+flowchart TD
+    A[Webcam Feed - OpenCV] -->|BGR Video Frames| B[Frame Preprocessing & Mirroring]
+    B -->|RGB Frames| C[Google MediaPipe Hands Model]
+    C -->|21 3D Joint Coordinates| D[Gesture Classification Engine]
+    
+    D -->|Index Finger Vector| E[Coordinate Interpolation & Smoothing]
+    D -->|Pinch Math Euclidean| F[Click Event with Cooldown]
+    D -->|Two Finger Delta| G[Vertical Page Scroll]
+    D -->|Closed Fist / FailSafe| H[Emergency Safety Stop]
+    
+    E --> I[PyAutoGUI Windows OS Controller]
+    F --> I
+    G --> I
+    H --> I
+    
+    C -.->|Real-time MJPEG Stream| J[FastAPI Web Server]
+    D -.->|WebSocket Telemetry| K[Futuristic Neon Web HUD]
+    
+    style A fill:#10131f,stroke:#00f0ff,stroke-width:2px,color:#fff
+    style C fill:#10131f,stroke:#b537f2,stroke-width:2px,color:#fff
+    style D fill:#10131f,stroke:#00ff88,stroke-width:2px,color:#fff
+    style I fill:#10131f,stroke:#ff2a85,stroke-width:2px,color:#fff
+    style K fill:#10131f,stroke:#00f0ff,stroke-width:2px,color:#fff
 ```
 
 ---
 
-## 🖐️ Gesture Reference Card
+## 📐 Mathematical Models (BCA Viva Ready)
 
-| Gesture | Finger State | Action |
-| :--- | :--- | :--- |
-| **Pointer Mode** | Index Finger UP | Moves mouse cursor smoothly across screen |
-| **Pinch Click** | Thumb + Index Tip touch ($\text{dist} < 35\text{px}$) | Triggers Single Left Click |
-| **Scroll Mode** | Index + Middle Fingers UP | Scrolls page Up / Down based on vertical delta |
-| **Rest / Pause** | Open Palm (All 5 Fingers UP) | Freezes cursor movement to rest hand |
-| **Emergency Lock** | Closed Fist (All Fingers DOWN) | Instantly locks mouse control into Safe Mode |
+### 1. Euclidean Distance for Pinch Clicks:
+$$\text{Distance} = \sqrt{(X_8 - X_4)^2 + (Y_8 - Y_4)^2}$$
+*Where $(X_4, Y_4)$ is Thumb Tip and $(X_8, Y_8)$ is Index Tip.*
 
----
+### 2. Active Tracking Zone Interpolation:
+$$X_{\text{screen}} = \text{interp}\left(X_{\text{finger}}, [M, W - M], [0, \text{Screen}_W]\right)$$
+$$Y_{\text{screen}} = \text{interp}\left(Y_{\text{finger}}, [M, H - M], [0, \text{Screen}_H]\right)$$
+*Maps hand movements within comfortable camera boundary box $M$ to full monitor resolution.*
 
-## 📐 Mathematical Formulations (BCA Viva Ready)
-
-### 1. Euclidean Distance for Pinch Detection:
-$$\text{Distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$$
-Where $(x_1, y_1)$ is Thumb Tip (Landmark 4) and $(x_2, y_2)$ is Index Tip (Landmark 8).
-
-### 2. Coordinate Interpolation (Active Box to Full Screen):
-$$X_{\text{screen}} = \text{interp}(X_{\text{finger}}, [M, W - M], [0, \text{Screen}_W])$$
-$$Y_{\text{screen}} = \text{interp}(Y_{\text{finger}}, [M, H - M], [0, \text{Screen}_H])$$
-Where $M$ is the comfort boundary margin, $W, H$ are camera dimensions, and $\text{Screen}_W, \text{Screen}_H$ are monitor dimensions.
-
-### 3. Exponential Moving Average Cursor Smoothing:
+### 3. Exponential Moving Average (Jitter Reduction):
 $$X_{\text{curr}} = X_{\text{prev}} + \frac{X_{\text{target}} - X_{\text{prev}}}{\alpha}$$
-Where $\alpha \ge 1$ is the smoothing factor (default: 5).
+*Where $\alpha \ge 1$ is the smoothing coefficient (eliminates natural hand tremors).*
 
 ---
 
-## 🛠️ Technology Stack
-- **Language:** Python 3.12
-- **Computer Vision:** OpenCV (`opencv-python 5.0+`)
-- **AI Hand Tracking:** Google MediaPipe (`mediapipe 0.10.14`)
-- **Desktop Automation:** PyAutoGUI (`pyautogui 0.9.54`)
-- **Backend API & WebSockets:** FastAPI (`0.110+`), Uvicorn (`0.28+`)
-- **Frontend Dashboard:** Modern HTML5, CSS3 (Cyberpunk Neon Theme), Vanilla JavaScript (WebSockets)
+## ⚡ How To Run on Windows 11
 
----
+### 1-Click Launchers (Easiest):
+1. **For Native Desktop Control (No Browser):**
+   - Double-click **`run_desktop_app.bat`**
+   - Press **`s`** on your keyboard to enable mouse control!
+2. **For Futuristic Web Dashboard:**
+   - Double-click **`run_gestureos.bat`**
+   - Opens automatically at `http://127.0.0.1:8000`
 
-## ⚡ Quick Start Guide
-
-### 1. Prerequisites:
-- Windows 11 (or 10)
-- Python 3.12 installed
-- Standard laptop or USB webcam
-
-### 2. Installation:
+### Manual Run via Terminal:
 ```powershell
-# Navigate to project folder
+# 1. Clone repository
+git clone https://github.com/rakibul200514/GestureOS.git
 cd GestureOS
 
-# Create and activate virtual environment
-py -3.12 -m venv venv
-venv\Scripts\activate
+# 2. Run Native Desktop Controller
+.\venv\Scripts\python.exe backend\desktop_app.py
 
-# Install required dependencies
-pip install -r requirements.txt
+# 3. Or Run Web Dashboard Server
+.\venv\Scripts\python.exe backend\main.py
 ```
-
-### 3. Running Unit Tests:
-```powershell
-python tests/test_units.py
-```
-
-### 4. Launching GestureOS:
-```powershell
-python backend/main.py
-```
-Open your browser and navigate to: **`http://127.0.0.1:8000`**
 
 ---
 
-## 🛡️ Safety & Ethics
-- **Non-Destructive:** Does not modify OS files, run terminal scripts, or execute destructive commands.
-- **FailSafe Built-in:** Shoving the mouse to any corner of your monitor immediately aborts PyAutoGUI control.
-- **Offline & Private:** Video processing runs 100% locally on your machine. No frames are stored or uploaded to external servers.
+## 📂 Project Structure
+
+```
+GestureOS/
+├── backend/
+│   ├── desktop_app.py        # Native Windows 11 Desktop Controller (No Browser)
+│   ├── hand_detector.py      # MediaPipe AI 21 Hand Landmarks Engine
+│   ├── mouse_controller.py   # PyAutoGUI Safe Mouse & Smoothing Controller
+│   ├── main.py               # FastAPI Server & MJPEG Stream Engine
+│   ├── camera_test.py        # Camera & FPS Verification Tool
+│   └── test_mouse_control.py # Desktop Control Integration Test
+├── frontend/
+│   ├── index.html            # Futuristic Neon Cyberpunk Dashboard
+│   ├── style.css             # Glassmorphism & Cyberpunk Theme Styling
+│   └── app.js                # Real-time WebSocket Telemetry & HUD Controls
+├── tests/
+│   └── test_units.py         # Unit Tests (100% Passed)
+├── run_desktop_app.bat       # 1-Click Native Desktop Launcher
+├── run_gestureos.bat         # 1-Click Web Dashboard Launcher
+├── PROJECT_REPORT.md         # Full Academic BCA 3rd Sem Project Report
+├── requirements.txt          # Python Dependencies
+├── .gitignore                # Git Ignore Rules
+└── README.md                 # Project Documentation
+```
 
 ---
 
-## 📜 License
-This project is licensed under the **MIT License**. Created as a BCA 3rd Semester Summer Project.
+## 🎓 BCA Viva Q&A Cheat-Sheet
+
+<details>
+<summary><b>Click to expand Viva Examination Questions & Answers</b></summary>
+<br>
+
+**Q1: Why did we use MediaPipe instead of training a CNN from scratch?**  
+> **Answer:** MediaPipe utilizes a lightweight two-stage pipeline (palm detector + landmark model) optimized with TFLite, running at 30+ FPS directly on standard CPUs without requiring GPU hardware.
+
+**Q2: Why is BGR to RGB color conversion mandatory?**  
+> **Answer:** OpenCV reads image frames in BGR format, while MediaPipe was trained on standard RGB color space. Passing BGR frames causes corrupted landmark predictions.
+
+**Q3: How does the system prevent accidental multi-clicks?**  
+> **Answer:** A software-level **Click Cooldown** mechanism ($0.4\text{s}$) prevents repetitive clicks within 400ms of an initial click event.
+
+**Q4: How does video stream directly to the web browser?**  
+> **Answer:** Through **MJPEG (Multipart JPEG) streaming** via FastAPI's `StreamingResponse` using MIME type `multipart/x-mixed-replace; boundary=frame`.
+
+**Q5: What safety features are implemented?**  
+> **Answer:** Safe Mode enabled by default, explicit keyboard toggle (`s`), closed-fist emergency stop, and PyAutoGUI corner failsafe.
+
+</details>
+
+---
+
+## 👨‍💻 Author & Academic Details
+
+- **Student Name:** Rakibul
+- **GitHub:** [@rakibul200514](https://github.com/rakibul200514)
+- **Program:** Bachelor of Computer Applications (BCA) — 3rd Semester
+- **Project Type:** Summer Project / Human-Computer Interaction (HCI)
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ using Python, OpenCV, and Google MediaPipe. If you found this project helpful, please give it a ⭐ on GitHub!</sub>
+</div>
