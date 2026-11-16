@@ -1,0 +1,15 @@
+# GestureOS - Dependencies
+# BCA 3rd Semester Summer Project
+
+# Computer Vision & Hand Landmark Detection
+opencv-python>=4.8.0
+mediapipe==0.10.14
+numpy>=1.24.0
+
+# Desktop & Mouse Automation
+pyautogui>=0.9.54
+
+# Backend API & Real-time WebSockets
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+websockets>=12.0

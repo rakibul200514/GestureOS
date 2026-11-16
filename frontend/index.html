@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GestureOS — Control Your Computer With Your Hands</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background Glow Accents -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-purple"></div>
+
+  <div class="app-container">
+    <!-- TOP NAVIGATION BAR -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="logo-icon">
+          <span class="pulse-ring"></span>
+          <span class="core-dot"></span>
+        </div>
+        <div class="brand-text">
+          <h1>Gesture<span class="neon-text">OS</span></h1>
+          <p class="tagline">TOUCHLESS DESKTOP CONTROL SYSTEM</p>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="status-badge" id="safeModeBadge">
+          <span class="badge-dot red" id="statusDot"></span>
+          <span class="badge-text" id="statusText">SAFE MODE (LOCKED)</span>
+        </div>
+        <div class="metrics-pill">
+          <span class="pill-label">FPS:</span>
+          <span class="pill-val" id="fpsCounter">0</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-emergency" id="emergencyStopBtn">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <rect x="9" y="9" width="6" height="6"></rect>
+          </svg>
+          EMERGENCY STOP
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN DASHBOARD GRID -->
+    <main class="dashboard-grid">
+      <!-- LEFT COLUMN: LIVE VIDEO HUD -->
+      <section class="panel hud-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span class="title-icon">👁</span>
+            <h2>LIVE VISION HUD</h2>
+          </div>
+          <div class="hud-controls">
+            <span class="badge-active-zone">ACTIVE BOUNDARY ZONE</span>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <!-- Live Camera MJPEG Stream -->
+          <img src="/video_feed" id="videoFeed" alt="Webcam Feed Loading..." class="video-stream" />
+          
+          <div class="video-overlay-header">
+            <div class="overlay-tag" id="handDetectedTag">Searching Hand...</div>
+            <div class="overlay-tag" id="currentGestureTag">IDLE</div>
+          </div>
+
+          <div class="crosshair top-left"></div>
+          <div class="crosshair top-right"></div>
+          <div class="crosshair bottom-left"></div>
+          <div class="crosshair bottom-right"></div>
+        </div>
+
+        <!-- QUICK TOGGLE BAR -->
+        <div class="hud-footer">
+          <div class="toggle-group">
+            <label class="toggle-switch">
+              <input type="checkbox" id="masterControlToggle" />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label" id="toggleLabel">Enable Mouse Control (Safe Mode)</span>
+          </div>
+          <p class="shortcut-hint">Shortcut: Press <strong>'s'</strong> in camera window or click toggle</p>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: SYSTEM PANELS -->
+      <section class="side-column">
+        <!-- GESTURE GUIDE CARD -->
+        <div class="panel guide-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="title-icon">🖐</span>
+              <h2>GESTURE DICTIONARY</h2>
+            </div>
+          </div>
+          <div class="gesture-grid">
+            <div class="gesture-card" id="cardPointer">
+              <div class="gesture-badge">POINTER</div>
+              <div class="gesture-icon">☝️</div>
+              <div class="gesture-info">
+                <h3>Index Finger</h3>
+                <p>Move mouse cursor smoothly</p>
+              </div>
+            </div>
+
+            <div class="gesture-card" id="cardClick">
+              <div class="gesture-badge">CLICK</div>
+              <div class="gesture-icon">🤏</div>
+              <div class="gesture-info">
+                <h3>Pinch (Thumb + Index)</h3>
+                <p>Perform Left Click</p>
+              </div>
+            </div>
+
+            <div class="gesture-card" id="cardScroll">
+              <div class="gesture-badge">SCROLL</div>
+              <div class="gesture-icon">✌️</div>
+              <div class="gesture-info">
+                <h3>Two Fingers Up</h3>
+                <p>Scroll Up / Down smoothly</p>
+              </div>
+            </div>
+
+            <div class="gesture-card" id="cardPause">
+              <div class="gesture-badge">PAUSE</div>
+              <div class="gesture-icon">✋</div>
+              <div class="gesture-info">
+                <h3>Open Palm</h3>
+                <p>Pause tracking (Hand rest)</p>
+              </div>
+            </div>
+
+            <div class="gesture-card" id="cardStop">
+              <div class="gesture-badge">LOCK</div>
+              <div class="gesture-icon">✊</div>
+              <div class="gesture-info">
+                <h3>Closed Fist</h3>
+                <p>Safe stop gesture control</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SENSITIVITY SETTINGS PANEL -->
+        <div class="panel settings-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="title-icon">⚙️</span>
+              <h2>CALIBRATION & SENSITIVITY</h2>
+            </div>
+          </div>
+          <div class="settings-content">
+            <div class="setting-row">
+              <div class="setting-meta">
+                <label for="smoothingSlider">Cursor Smoothing</label>
+                <span class="setting-value" id="smoothingVal">5</span>
+              </div>
+              <input type="range" id="smoothingSlider" min="1" max="10" value="5" class="slider-bar" />
+              <span class="setting-hint">Higher = Less jitter, smoother cursor movement.</span>
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-meta">
+                <label for="cooldownSlider">Click Cooldown (Seconds)</label>
+                <span class="setting-value" id="cooldownVal">0.4s</span>
+              </div>
+              <input type="range" id="cooldownSlider" min="0.2" max="1.0" step="0.1" value="0.4" class="slider-bar" />
+              <span class="setting-hint">Minimum delay between repeated clicks.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LIVE EVENT LOGS -->
+        <div class="panel logs-panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="title-icon">📜</span>
+              <h2>GESTURE HISTORY</h2>
+            </div>
+            <button class="btn-clear-logs" id="clearLogsBtn">Clear</button>
+          </div>
+          <div class="logs-container" id="logsList">
+            <div class="log-entry system">[SYSTEM] GestureOS Dashboard connected successfully.</div>
+            <div class="log-entry safe">[SAFETY] Safe Mode enabled by default.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <p>GestureOS v1.0 • BCA 3rd Semester Project • Computer Vision & Human-Computer Interaction (HCI)</p>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
