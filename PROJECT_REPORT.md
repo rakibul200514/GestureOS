@@ -112,7 +112,7 @@ Where $S \ge 1$ is the smoothing coefficient (default $S=5$).
 
 ---
 
-## 7. BCA VIVA DEFENSE PREPARATION (Q&A)
+## 7. Q&A
 
 **Q1: Why did we use MediaPipe instead of training a CNN from scratch?**  
 *Answer:* MediaPipe provides a pre-trained, highly optimized pipeline combining a palm detector and a 3D hand landmark model that operates at 30+ FPS on standard CPU hardware without requiring dedicated GPU accelerators.
@@ -145,5 +145,4 @@ Where $S \ge 1$ is the smoothing coefficient (default $S=5$).
 - Voice-assisted dual-mode control.
 
 ---
-**Candidate Signature:** _______________________  
-**Project Guide Signature:** _______________________
+**Candidate Signature:** <u>Md Rakibibul Islam</u>
