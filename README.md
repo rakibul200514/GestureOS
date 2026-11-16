@@ -180,7 +180,7 @@ GestureOS/
 ## 🎓 Q&A 
 
 <details>
-<summary><b>Click to expand Viva Examination Questions & Answers</b></summary>
+<summary><b>Click to expand Questions & Answers</b></summary>
 <br>
 
 **Q1: Why did we use MediaPipe instead of training a CNN from scratch?**  
