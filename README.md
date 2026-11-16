@@ -108,7 +108,7 @@ flowchart TD
 
 ---
 
-## 📐 Mathematical Models (BCA Viva Ready)
+## 📐 Mathematical Models
 
 ### 1. Euclidean Distance for Pinch Clicks:
 $$\text{Distance} = \sqrt{(X_8 - X_4)^2 + (Y_8 - Y_4)^2}$$
@@ -177,7 +177,7 @@ GestureOS/
 
 ---
 
-## 🎓 BCA Viva Q&A Cheat-Sheet
+## 🎓 Q&A 
 
 <details>
 <summary><b>Click to expand Viva Examination Questions & Answers</b></summary>
@@ -204,7 +204,7 @@ GestureOS/
 
 ## 👨‍💻 Author & Academic Details
 
-- **Student Name:** Rakibul
+- **Student Name:** Md Rakibul Islam
 - **GitHub:** [@rakibul200514](https://github.com/rakibul200514)
 - **Program:** Bachelor of Computer Applications (BCA) — 3rd Semester
 - **Project Type:** Summer Project / Human-Computer Interaction (HCI)
